@@ -1,0 +1,62 @@
+<Context>
+
+	<Resource
+		name ="jdbc/OracleDB"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="scott"
+		password="tiger"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+		url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+	/>
+
+
+</Context>
+
+<!-- 
+	1. name =  jdbc/OracleDB
+		JNDI로 호출될 이름을 설정하는 곳으로 임의로 이름 설정 가능합니다.
+		dbcpAPITest.jsp의 init.lookup("java:comp/env/jdbc/OracleDB");
+		lookup() 메서드로 여기서 설정한 이름을 찾습니다.
+		
+	2. auto ="Container"
+		DBCP를 관리할 관리자 (Container or Application)로 컨테이너인 톰캣이 관리합니다
+
+
+	3. type= "javax.sql.DataSource"
+		1번 resource의 return type 이 DataSource라는 의미이며 Connection 객체를 반환할 수  있습니다.
+		  예)  DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+
+	
+	4. username="scott" (DB 계정명)
+		
+	
+	5. password="tiger" (DB 패스워드)
+	
+	
+	6. driverClassName="oracle.jdbc.driver.OracleDriver"
+		오라클 드라이버 이름(JDBC를 이용하기 위한 드라이버 클래스)
+	
+	7. factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" (8버전이상)
+		dbcp를 관리하는 클래스로 Factory 클래스를 이용하면 좀 더 안정저거으로 관리할 수 있습니다
+		
+		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"(7버전)
+	
+	
+	
+	8. url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+		DB의 접속 URL입니다
+
+
+
+	***
+	//C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 에있는 ojdbc6.jar파일 복서해서
+	 WEB-INF/lib 파일에 넣은 후 확인
+	 
+
+
+
+ -->
+
+
